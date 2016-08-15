@@ -1,0 +1,89 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{7E94CFE0-DB10-44F9-97C5-EA71C795EE23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organization.Core", "Organization.Core\Organization.Core.csproj", "{CFA9BD96-CE93-4E55-98E4-CB4C93DFC798}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{FABAF64D-A486-44F5-98D5-C133298A0BDE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1537500D-7076-49E9-A09A-D078CCEEABE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{ABA90F64-225E-4E19-B3DB-52EAC73EF741}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organization.Domain", "Organization.Domain\Organization.Domain.csproj", "{C3534FF5-7711-466A-B834-C1DDE1ED4390}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organization.Infrastructure.Data", "Organization.Infrastructure.Data\Organization.Infrastructure.Data.csproj", "{28590189-B959-46FB-A9AF-56B5720C1758}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organization.Infrastructure.DependecyResolution", "Organization.Infrastructure.DependecyResolution\Organization.Infrastructure.DependecyResolution.csproj", "{70048211-2E63-40DB-8975-C75E040C1DBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organization.Infrastructure.Interfaces", "Organization.Infrastructure.Interfaces\Organization.Infrastructure.Interfaces.csproj", "{AF34CA19-EF80-4751-9180-DA5D6F15AE06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organization.Infrastructure.Logging", "Organization.Infrastructure.Logging\Organization.Infrastructure.Logging.csproj", "{CFBA7D1D-9CA5-42A5-8060-6EE1BFAD0F81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organization.Services.Interfaces", "Organization.Services.Interfaces\Organization.Services.Interfaces.csproj", "{A20E007C-4F44-439E-9111-076A0671B98F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organization.Services", "Organization.Services\Organization.Services.csproj", "{57AED6AE-0D09-49A7-A4A0-290E3009E31A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DBB17EFD-94D7-480F-9E28-F6B3F061FEBD}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFA9BD96-CE93-4E55-98E4-CB4C93DFC798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA9BD96-CE93-4E55-98E4-CB4C93DFC798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA9BD96-CE93-4E55-98E4-CB4C93DFC798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA9BD96-CE93-4E55-98E4-CB4C93DFC798}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3534FF5-7711-466A-B834-C1DDE1ED4390}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3534FF5-7711-466A-B834-C1DDE1ED4390}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3534FF5-7711-466A-B834-C1DDE1ED4390}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3534FF5-7711-466A-B834-C1DDE1ED4390}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28590189-B959-46FB-A9AF-56B5720C1758}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28590189-B959-46FB-A9AF-56B5720C1758}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28590189-B959-46FB-A9AF-56B5720C1758}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28590189-B959-46FB-A9AF-56B5720C1758}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70048211-2E63-40DB-8975-C75E040C1DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70048211-2E63-40DB-8975-C75E040C1DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70048211-2E63-40DB-8975-C75E040C1DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70048211-2E63-40DB-8975-C75E040C1DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF34CA19-EF80-4751-9180-DA5D6F15AE06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF34CA19-EF80-4751-9180-DA5D6F15AE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF34CA19-EF80-4751-9180-DA5D6F15AE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF34CA19-EF80-4751-9180-DA5D6F15AE06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFBA7D1D-9CA5-42A5-8060-6EE1BFAD0F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFBA7D1D-9CA5-42A5-8060-6EE1BFAD0F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFBA7D1D-9CA5-42A5-8060-6EE1BFAD0F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFBA7D1D-9CA5-42A5-8060-6EE1BFAD0F81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A20E007C-4F44-439E-9111-076A0671B98F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A20E007C-4F44-439E-9111-076A0671B98F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A20E007C-4F44-439E-9111-076A0671B98F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A20E007C-4F44-439E-9111-076A0671B98F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57AED6AE-0D09-49A7-A4A0-290E3009E31A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57AED6AE-0D09-49A7-A4A0-290E3009E31A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57AED6AE-0D09-49A7-A4A0-290E3009E31A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57AED6AE-0D09-49A7-A4A0-290E3009E31A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CFA9BD96-CE93-4E55-98E4-CB4C93DFC798} = {7E94CFE0-DB10-44F9-97C5-EA71C795EE23}
+		{C3534FF5-7711-466A-B834-C1DDE1ED4390} = {FABAF64D-A486-44F5-98D5-C133298A0BDE}
+		{28590189-B959-46FB-A9AF-56B5720C1758} = {1537500D-7076-49E9-A09A-D078CCEEABE8}
+		{70048211-2E63-40DB-8975-C75E040C1DBB} = {1537500D-7076-49E9-A09A-D078CCEEABE8}
+		{AF34CA19-EF80-4751-9180-DA5D6F15AE06} = {1537500D-7076-49E9-A09A-D078CCEEABE8}
+		{CFBA7D1D-9CA5-42A5-8060-6EE1BFAD0F81} = {1537500D-7076-49E9-A09A-D078CCEEABE8}
+		{A20E007C-4F44-439E-9111-076A0671B98F} = {ABA90F64-225E-4E19-B3DB-52EAC73EF741}
+		{57AED6AE-0D09-49A7-A4A0-290E3009E31A} = {ABA90F64-225E-4E19-B3DB-52EAC73EF741}
+	EndGlobalSection
+EndGlobal
