@@ -40,7 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IReadRepository.cs" />
-    <Compile Include="IReadWriteRepository.cs" />
+    <Compile Include="IReadWriteRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ITransaction.cs" />
     <Compile Include="IWriteRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
