@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Organization.Infrastructure.Interfaces
+namespace Organization.Domain.Interfaces
 {
-	interface ITransaction
+	public interface ITransaction : IDisposable
 	{
+		void Commit();
+		void Rollback();
 	}
 }
