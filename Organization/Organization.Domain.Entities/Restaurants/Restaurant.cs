@@ -2,7 +2,7 @@
 
 namespace Organization.Domain.Entities.Restaurants
 {
-	public class Restaurant
+	public sealed class Restaurant
 	{
 		public int RestaurantID { get; set; }
 

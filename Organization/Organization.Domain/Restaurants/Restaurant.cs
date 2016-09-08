@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Organization.Domain.Restaurants
 {
-	public class Restaurant
+	using Organization.Common.Entities;
+
+	public sealed class Restaurant : BaseEntity
 	{
 		public int RestaurantID { get; set; }
 
@@ -26,23 +24,6 @@ namespace Organization.Domain.Restaurants
 
 		public string CSTTINNo { get; set; }
 
-		public bool IsActive { get; set; }
-
-		public bool IsDeleted { get; set; }
-
-		public int CommandID { get; set; }
-
-		public int CreateBy { get; set; }
-
-		public DateTime CreateDateTime { get; set; }
-
-		public int UpdateBy { get; set; }
-
-		public DateTime UpdateDateTime { get; set; }
-
-		public int DeleteBy { get; set; }
-
-		public DateTime DeleteDateTime { get; set; }
 
 	}
 }

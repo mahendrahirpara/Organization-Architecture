@@ -1,14 +1,13 @@
-﻿using Organization.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Organization.Infrastructure.Data.Repositories
 {
-	public class Repository<TEntity> : IReadWriteRepository<TEntity>
-	   where TEntity : class
+	using NHibernate;
+	using Organization.Common.Entities;
+	using Organization.Domain.Interfaces;
+	using System.Linq;
+
+	public class Repository<TEntity> : IRepository<TEntity>
+	   where TEntity : BaseEntity
 	{
 		private readonly ISession _session;
 
@@ -70,7 +69,8 @@ namespace Organization.Infrastructure.Data.Repositories
 
 		public System.Linq.IQueryable<TEntity> All()
 		{
-			return _session.Query<TEntity>();
+			//return _session.QueryOver<TEntity>();
+			return null;
 		}
 
 		public TEntity FindBy(System.Linq.Expressions.Expression<System.Func<TEntity, bool>> expression)

@@ -1,10 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
+﻿
 
 namespace Organization.Domain.Interfaces
 {
-	public interface IReadRepository<TEntity> where TEntity : class
+	using Organization.Common.Entities;
+	using System;
+	using System.Linq;
+	using System.Linq.Expressions;
+
+	public interface IReadRepository<TEntity> where TEntity : BaseEntity
 	{
 		IQueryable<TEntity> All();
 

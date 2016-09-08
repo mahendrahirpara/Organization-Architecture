@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{28590189-B959-46FB-A9AF-56B5720C1758}</ProjectGuid>
+    <ProjectGuid>{36CE4D81-C24C-426B-BB58-10AD07080413}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Organization.Infrastructure.Data</RootNamespace>
-    <AssemblyName>Organization.Infrastructure.Data</AssemblyName>
+    <RootNamespace>Hotel720.Platform.Infrastructure</RootNamespace>
+    <AssemblyName>Hotel720.Platform.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,17 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentNHibernate">
-      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="Iesi.Collections">
-      <HintPath>..\packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate">
-      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,31 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\ApplicationConfiguration.cs" />
-    <Compile Include="Helpers\NHibernateHelper.cs" />
-    <Compile Include="Helpers\UnitOfWork .cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Organization.Common.Entities\Organization.Common.Entities.csproj">
-      <Project>{4e82ab8d-2499-448f-83ef-dce987c426f1}</Project>
-      <Name>Organization.Common.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Organization.Core\Organization.Core.csproj">
-      <Project>{cfa9bd96-ce93-4e55-98e4-cb4c93dfc798}</Project>
-      <Name>Organization.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Organization.Domain.Interfaces\Organization.Domain.Interfaces.csproj">
-      <Project>{85ae0aa2-1ed2-426c-b942-6a3b6c3c17d1}</Project>
-      <Name>Organization.Domain.Interfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mapping\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Folder Include="Queries\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

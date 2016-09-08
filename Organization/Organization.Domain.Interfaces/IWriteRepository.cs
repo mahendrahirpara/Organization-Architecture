@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿
 
 namespace Organization.Domain.Interfaces
 {
-	public interface IWriteRepository<TEntity> where TEntity : class
+	using Organization.Common.Entities;
+	using System.Collections.Generic;
+
+	public interface IWriteRepository<TEntity> where TEntity : BaseEntity
 	{
 		bool Add(TEntity entity);
 

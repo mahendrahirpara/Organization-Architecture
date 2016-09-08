@@ -39,10 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\AuditableEntity.cs" />
-    <Compile Include="Common\BaseEntity.cs" />
     <Compile Include="Common\IAuditable.cs" />
     <Compile Include="Common\IBaseEntity.cs" />
+    <Compile Include="Configuration\ConfigurationManager.cs" />
+    <Compile Include="Configuration\IConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
