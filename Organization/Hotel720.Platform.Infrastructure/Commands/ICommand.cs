@@ -1,7 +1,9 @@
 ﻿
+using System;
 namespace Hotel720.Platform.Infrastructure.Commands
 {
-	interface ICommand
+	public interface ICommand
 	{
+		Guid Id { get; set; }
 	}
 }

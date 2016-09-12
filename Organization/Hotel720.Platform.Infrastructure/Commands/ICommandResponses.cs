@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Hotel720.Platform.Infrastructure.Commands
 {
-    public interface ICommandResult
+    public interface ICommandResponses
     {
+		ICommandResponse[] Results { get; }
+
         bool Success { get; }
-        Guid Guid { get; }
-        Guid[] Guids { get; }
-        int Id { get; }
     }
 }

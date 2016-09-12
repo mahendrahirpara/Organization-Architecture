@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{36CE4D81-C24C-426B-BB58-10AD07080413}</ProjectGuid>
+    <ProjectGuid>{9048EFD6-CAFF-42B6-A33B-D223BCB18106}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hotel720.Platform.Infrastructure</RootNamespace>
-    <AssemblyName>Hotel720.Platform.Infrastructure</AssemblyName>
+    <RootNamespace>Hotel720.Platform.Infrastructure.Data.NoSql</RootNamespace>
+    <AssemblyName>Hotel720.Platform.Infrastructure.Data.NoSql</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,7 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\MongoDB.Bson.2.2.4\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\MongoDB.Driver.2.2.4\lib\net45\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.2.4\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Legacy">
+      <HintPath>..\packages\mongocsharpdriver.2.2.4\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,48 +52,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\BaseCommand.cs" />
-    <Compile Include="Commands\BaseCommandResponse.cs" />
-    <Compile Include="Commands\BaseEvent.cs" />
-    <Compile Include="Commands\CommandHandlerNotFoundException.cs" />
-    <Compile Include="Commands\BaseCommandResponses.cs" />
-    <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Commands\ICommandBus.cs" />
-    <Compile Include="Commands\ICommandFactory.cs" />
-    <Compile Include="Commands\ICommandHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Commands\ICommandResponse.cs" />
-    <Compile Include="Commands\ICommandResponses.cs" />
-    <Compile Include="Commands\IEvent.cs" />
-    <Compile Include="Commands\IValidationHandler.cs" />
-    <Compile Include="Commands\ValidationHandlerNotFoundException.cs" />
-    <Compile Include="Data\IDataContextFactory.cs" />
-    <Compile Include="Data\IRepository.cs" />
-    <Compile Include="Data\IRepositoryFactory.cs" />
-    <Compile Include="Data\IUnitOfWork.cs" />
-    <Compile Include="Data\IUnitOfWorkFactory.cs" />
-    <Compile Include="Data\RepositoryBase.cs" />
-    <Compile Include="Data\UnitOfWorkBase.cs" />
-    <Compile Include="IPackage.cs" />
+    <Compile Include="EntityRepository.cs" />
+    <Compile Include="IRepositoryManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\IQuery.cs" />
-    <Compile Include="Queries\IQueryBus.cs" />
-    <Compile Include="Queries\IQueryFactory.cs" />
-    <Compile Include="Queries\IQueryHandler.cs" />
-    <Compile Include="Queries\IQueryResult.cs" />
-    <Compile Include="Queries\IValidationQueryHandler.cs" />
-    <Compile Include="Queries\IView.cs" />
-    <Compile Include="Queries\QueryHandlerNotFoundException.cs" />
-    <Compile Include="Queries\QueryResult.cs" />
-    <Compile Include="Queries\QueryValidationHandlerNotFoundException.cs" />
-    <Compile Include="Validations\ValidationResult.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Hotel720.Platform.Infrastructure\Hotel720.Platform.Infrastructure.csproj">
+      <Project>{36ce4d81-c24c-426b-bb58-10ad07080413}</Project>
+      <Name>Hotel720.Platform.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HotelCommerce.Common.Entities\HotelCommerce.Common.Entities.csproj">
       <Project>{7d82592e-7156-4375-8862-0bb8bae76311}</Project>
       <Name>HotelCommerce.Common.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

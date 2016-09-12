@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel720.Platform.Infrastructure.Validations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,5 @@ namespace Hotel720.Platform.Infrastructure.Queries
     public interface IValidationQueryHandler<in TQuery> where TQuery : IQuery
     {
         IEnumerable<ValidationResult> Validate(TQuery query, string strToken, string strSwitchAccountId, bool bSkipTokenValidation);
-        //IEnumerable<ValidationResult> Validate(TQuery[] queries, string strToken, bool bSkipTokenValidation);
     }
 }

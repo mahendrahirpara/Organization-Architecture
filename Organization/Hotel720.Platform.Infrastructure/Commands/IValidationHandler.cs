@@ -1,9 +1,5 @@
-﻿using Appspace.Infrastructure.Core.Model;
-using System;
+﻿using Hotel720.Platform.Infrastructure.Validations;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel720.Platform.Infrastructure.Commands
 {
