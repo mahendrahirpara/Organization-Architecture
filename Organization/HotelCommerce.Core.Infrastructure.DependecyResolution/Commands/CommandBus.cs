@@ -4,9 +4,10 @@ namespace HotelCommerce.Core.Infrastructure.DependecyResolution.Commands
 	using Hotel720.Platform.Infrastructure.Commands;
 	using SimpleInjector;
 
-    public class CommandBus : ICommandBus
+    public sealed class CommandBus : ICommandBus
     {
 		private readonly Container container;
+
 		public CommandBus(Container container)
         {
 			this.container = container;

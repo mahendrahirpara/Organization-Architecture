@@ -2,6 +2,6 @@
 {
     public interface IQueryFactory
     {
-        T Get<T>(string name = null) where T : IQuery;
+        T Get<T>() where T : class;
     }
 }

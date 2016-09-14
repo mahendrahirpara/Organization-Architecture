@@ -1,9 +1,11 @@
-﻿using Hotel720.Platform.Infrastructure.Data;
-using SimpleInjector;
-
+﻿
 namespace HotelCommerce.Core.Infrastructure.DependecyResolution.Data
 {
-    public class RepositoryFactory : IRepositoryFactory
+	using Hotel720.Platform.Infrastructure.Data;
+	using HotelCommerce.Common.Entities;
+	using SimpleInjector;
+
+    public sealed class RepositoryFactory : IRepositoryFactory
     {
 		private readonly Container container;
 		public RepositoryFactory(Container container)
@@ -11,12 +13,8 @@ namespace HotelCommerce.Core.Infrastructure.DependecyResolution.Data
 			this.container = container;
         }
 
-        public IRepository<T> Get<T>(string name = null) where T : class
+		public IRepository<T> Get<T>() where T : IEntity
         {
-            if (!string.IsNullOrWhiteSpace(name))
-            {
-				//return container.GetInstance<IRepository<T>>(name);
-            }
 			return container.GetInstance<IRepository<T>>();
         }
     }

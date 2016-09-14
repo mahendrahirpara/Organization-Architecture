@@ -6,6 +6,6 @@ namespace Hotel720.Platform.Infrastructure.Data
 
 	public interface IRepositoryFactory
 	{
-		IRepository<T> Get<T>(string named = null) where T : IEntity;
+		IRepository<T> Get<T>() where T : IEntity;
 	}
 }

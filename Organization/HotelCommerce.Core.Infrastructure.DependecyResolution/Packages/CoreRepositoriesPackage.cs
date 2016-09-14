@@ -2,7 +2,7 @@
 
 namespace HotelCommerce.Core.Infrastructure.DependecyResolution.Packages
 {
-	public sealed class CommandsPackage : IPackage<SimpleInjector.Container>
+	public sealed class CoreRepositoriesPackage : IPackage<SimpleInjector.Container>
     {
 		public void RegisterServices(SimpleInjector.Container container)
 		{
