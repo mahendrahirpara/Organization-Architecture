@@ -10,8 +10,8 @@ namespace Hotel720.Platform.Infrastructure.Data.NoSql
 	/// </summary>
 	/// <typeparam name="T">The type contained in the repository to manage.</typeparam>
 	/// <typeparam name="TKey">The type used for the entity's Id.</typeparam>
-	public interface IRepositoryManager<T, TKey>
-		where T : IEntity<TKey>
+	public interface IRepositoryManager<T>
+		where T : IEntity
 	{
 		/// <summary>
 		/// Gets a value indicating whether the collection already exists.
@@ -159,13 +159,4 @@ namespace Hotel720.Platform.Infrastructure.Data.NoSql
 		/// <returns>Returns the indexes for this repository.</returns>
 		GetIndexesResult GetIndexes();
 	}
-
-	/// <summary>
-	/// IRepositoryManager definition.
-	/// </summary>
-	/// <typeparam name="T">The type contained in the repository to manage.</typeparam>
-	/// <remarks>Entities are assumed to use strings for Id's.</remarks>
-	public interface IRepositoryManager<T> : IRepositoryManager<T, string>
-		where T : IEntity<string> { }
 }
-

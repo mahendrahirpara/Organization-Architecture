@@ -56,9 +56,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Hotel720.Platform.Infrastructure.Data.NoSql\Hotel720.Platform.Infrastructure.Data.NoSql.csproj">
+      <Project>{9048efd6-caff-42b6-a33b-d223bcb18106}</Project>
+      <Name>Hotel720.Platform.Infrastructure.Data.NoSql</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Hotel720.Platform.Infrastructure\Hotel720.Platform.Infrastructure.csproj">
       <Project>{36ce4d81-c24c-426b-bb58-10ad07080413}</Project>
       <Name>Hotel720.Platform.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HotelCommerce.Common.Entities\HotelCommerce.Common.Entities.csproj">
+      <Project>{7d82592e-7156-4375-8862-0bb8bae76311}</Project>
+      <Name>HotelCommerce.Common.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

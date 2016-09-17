@@ -15,21 +15,16 @@
 	/// </summary>
 	/// <typeparam name="T">The type contained in the repository.</typeparam>
 	/// <typeparam name="TKey">The type used for the entity's Id.</typeparam>
-	public class EntityRepository<T, TKey> : RepositoryBase<MongoCollection<T>>, IRepository<T, TKey> where T : IEntity<TKey>
+	public class EntityRepository<T> : RepositoryBase<IMongoDatabase>, IRepository<T> where T : IEntity
 	{
+		private readonly IMongoCollection<T> DataCollection;
 
-		protected EntityRepository(IDataContextFactory<MongoCollection<T>> dataContextFactory)
+		private static readonly string DataContextName = MongoHelper.GetCollectionName<T>();
+
+		protected EntityRepository(IDataContextFactory<IMongoDatabase> dataContextFactory)
 			: base(dataContextFactory)
 		{
-
-		}
-
-		/// <summary>
-		/// Gets the name of the collection
-		/// </summary>
-		public string CollectionName
-		{
-			get { return this.DataContext.Name; }
+			this.DataCollection = this.DataContext.GetCollection<T>(DataContextName);
 		}
 
 		/// <summary>
@@ -37,24 +32,9 @@
 		/// </summary>
 		/// <param name="id">The Id of the entity to retrieve.</param>
 		/// <returns>The Entity T.</returns>
-		public virtual T GetById(TKey id)
+		public virtual T GetById(object id)
 		{
-			if (typeof(T).IsSubclassOf(typeof(BaseEntity)))
-			{
-				return this.GetById(new ObjectId(id as string));
-			}
-
-			return this.DataContext.FindOneByIdAs<T>(BsonValue.Create(id));
-		}
-
-		/// <summary>
-		/// Returns the T by its given id.
-		/// </summary>
-		/// <param name="id">The Id of the entity to retrieve.</param>
-		/// <returns>The Entity T.</returns>
-		public virtual T GetById(ObjectId id)
-		{
-			return this.DataContext.FindOneByIdAs<T>(id);
+			return this.DataCollection.Find(Builders<T>.Filter.Where(x => x.Id == id.ToString())).FirstOrDefault();
 		}
 
 		/// <summary>
@@ -64,8 +44,7 @@
 		/// <returns>The added entity including its new ObjectId.</returns>
 		public virtual T Add(T entity)
 		{
-			this.DataContext.Insert<T>(entity);
-
+			this.DataCollection.InsertOne(entity);
 			return entity;
 		}
 
@@ -75,7 +54,7 @@
 		/// <param name="entities">The entities of type T.</param>
 		public virtual void Add(IEnumerable<T> entities)
 		{
-			this.DataContext.InsertBatch<T>(entities);
+			this.DataCollection.InsertMany(entities);
 		}
 
 		/// <summary>
@@ -85,7 +64,7 @@
 		/// <returns>The updated entity.</returns>
 		public virtual T Update(T entity)
 		{
-			this.DataContext.Save<T>(entity);
+			this.DataCollection.UpdateOne(null, null);
 
 			return entity;
 		}
@@ -98,7 +77,7 @@
 		{
 			foreach (T entity in entities)
 			{
-				this.DataContext.Save<T>(entity);
+				this.DataCollection.UpdateOne(null, null);
 			}
 		}
 
@@ -106,25 +85,9 @@
 		/// Deletes an entity from the repository by its id.
 		/// </summary>
 		/// <param name="id">The entity's id.</param>
-		public virtual void Delete(TKey id)
+		public virtual void Delete(object id)
 		{
-			if (typeof(T).IsSubclassOf(typeof(BaseEntity)))
-			{
-				this.DataContext.Remove(Query.EQ("_id", new ObjectId(id as string)));
-			}
-			else
-			{
-				this.DataContext.Remove(Query.EQ("_id", BsonValue.Create(id)));
-			}
-		}
-
-		/// <summary>
-		/// Deletes an entity from the repository by its ObjectId.
-		/// </summary>
-		/// <param name="id">The ObjectId of the entity.</param>
-		public virtual void Delete(ObjectId id)
-		{
-			this.DataContext.Remove(Query.EQ("_id", id));
+			this.DataCollection.DeleteOne(Builders<T>.Filter.Where(x => x.Id == id.ToString()));
 		}
 
 		/// <summary>
@@ -142,27 +105,7 @@
 		/// <param name="predicate">The expression.</param>
 		public virtual void Delete(Expression<Func<T, bool>> predicate)
 		{
-			foreach (T entity in this.DataContext.AsQueryable<T>().Where(predicate))
-			{
-				this.Delete(entity.Id);
-			}
-		}
-
-		/// <summary>
-		/// Deletes all entities in the repository.
-		/// </summary>
-		public virtual void DeleteAll()
-		{
-			this.DataContext.RemoveAll();
-		}
-
-		/// <summary>
-		/// Counts the total entities in the repository.
-		/// </summary>
-		/// <returns>Count of entities in the collection.</returns>
-		public virtual long Count()
-		{
-			return this.DataContext.Count();
+			this.DataCollection.DeleteMany(predicate);
 		}
 
 		/// <summary>
@@ -172,7 +115,7 @@
 		/// <returns>True when an entity matching the predicate exists, false otherwise.</returns>
 		public virtual bool Exists(Expression<Func<T, bool>> predicate)
 		{
-			return this.DataContext.AsQueryable<T>().Any(predicate);
+			return this.DataCollection.AsQueryable<T>().Any(predicate);
 		}
 
 		#region IQueryable<T>
@@ -182,7 +125,7 @@
 		/// <returns>An IEnumerator&lt;T&gt; object that can be used to iterate through the collection.</returns>
 		public virtual IEnumerator<T> GetEnumerator()
 		{
-			return this.DataContext.AsQueryable<T>().GetEnumerator();
+			return this.DataCollection.AsQueryable<T>().GetEnumerator();
 		}
 
 		/// <summary>
@@ -191,7 +134,7 @@
 		/// <returns>An IEnumerator object that can be used to iterate through the collection.</returns>
 		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
 		{
-			return this.DataContext.AsQueryable<T>().GetEnumerator();
+			return this.DataCollection.AsQueryable<T>().GetEnumerator();
 		}
 
 		/// <summary>
@@ -199,7 +142,7 @@
 		/// </summary>
 		public virtual Type ElementType
 		{
-			get { return this.DataContext.AsQueryable<T>().ElementType; }
+			get { return this.DataCollection.AsQueryable<T>().ElementType; }
 		}
 
 		/// <summary>
@@ -207,7 +150,7 @@
 		/// </summary>
 		public virtual Expression Expression
 		{
-			get { return this.DataContext.AsQueryable<T>().Expression; }
+			get { return this.DataCollection.AsQueryable<T>().Expression; }
 		}
 
 		/// <summary>
@@ -215,24 +158,8 @@
 		/// </summary>
 		public virtual IQueryProvider Provider
 		{
-			get { return this.DataContext.AsQueryable<T>().Provider; }
+			get { return this.DataCollection.AsQueryable<T>().Provider; }
 		}
 		#endregion
-	}
-
-	/// <summary>
-	/// Deals with entities in MongoDb.
-	/// </summary>
-	/// <typeparam name="T">The type contained in the repository.</typeparam>
-	/// <remarks>Entities are assumed to use strings for Id's.</remarks>
-	public class EntityRepository<T> : EntityRepository<T, string>, IRepository<T>
-		where T : IEntity<string>
-	{
-		protected EntityRepository(IDataContextFactory<MongoCollection<T>> dataContextFactory)
-			: base(dataContextFactory)
-		{
-
-		}
-		 
 	}
 }

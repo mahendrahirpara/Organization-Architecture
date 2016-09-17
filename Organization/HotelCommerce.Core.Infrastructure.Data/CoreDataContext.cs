@@ -1,20 +1,21 @@
 ﻿using Hotel720.Platform.Infrastructure.Data;
+using Hotel720.Platform.Infrastructure.Data.NoSql;
 using MongoDB.Driver;
 
 namespace HotelCommerce.Core.Infrastructure.Data
 {
-	public sealed class CoreDataContext<T> : IDataContextFactory<IMongoCollection<T>>
+	public sealed class CoreDataContext : IDataContextFactory<IMongoDatabase>
 	{
-		private static readonly IMongoDatabase iMongoDatabase;
+		private readonly IMongoDatabase iMongoDatabase;
 
-		static CoreDataContext()
+		public CoreDataContext(string databaseName, string connectionString)
 		{
-			//iMongoDatabase =  MongoDbConnection<
+			iMongoDatabase = MongoHelper.GetDatabase(databaseName, connectionString);
 		}
 
-		public IMongoCollection<T> GetContext()
+		public IMongoDatabase GetContext()
 		{
-			return iMongoDatabase.GetCollection<T>("");
+			return iMongoDatabase;
 		}
 
 		public void Dispose()
