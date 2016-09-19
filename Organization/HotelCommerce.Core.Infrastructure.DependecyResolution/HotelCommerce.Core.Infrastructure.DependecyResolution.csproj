@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\MongoDB.Bson.2.2.4\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\MongoDB.Driver.2.2.4\lib\net45\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.2.4\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Legacy">
+      <HintPath>..\packages\mongocsharpdriver.2.2.4\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleInjector">
       <HintPath>..\packages\SimpleInjector.3.2.2\lib\net45\SimpleInjector.dll</HintPath>
     </Reference>
@@ -47,6 +59,7 @@
     <Compile Include="Data\RepositoryFactory.cs" />
     <Compile Include="Data\UnitOfWorkFactory.cs" />
     <Compile Include="Packages\CommandsPackage.cs" />
+    <Compile Include="Packages\CoreDataContextPackage.cs" />
     <Compile Include="Packages\CoreRepositoriesPackage.cs" />
     <Compile Include="Packages\CQRSPackage.cs" />
     <Compile Include="Packages\QueriesPackage.cs" />
@@ -66,6 +79,10 @@
     <ProjectReference Include="..\HotelCommerce.Common.Entities\HotelCommerce.Common.Entities.csproj">
       <Project>{7d82592e-7156-4375-8862-0bb8bae76311}</Project>
       <Name>HotelCommerce.Common.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HotelCommerce.Core.Infrastructure.Data\HotelCommerce.Core.Infrastructure.Data.csproj">
+      <Project>{e9f67c21-8c41-4603-aa5b-36dd6dcbb6b6}</Project>
+      <Name>HotelCommerce.Core.Infrastructure.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
