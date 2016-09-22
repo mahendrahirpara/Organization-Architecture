@@ -34,7 +34,8 @@
 		/// <returns>The Entity T.</returns>
 		public virtual T GetById(object id)
 		{
-			return this.DataCollection.Find(Builders<T>.Filter.Where(x => x.Id == id.ToString())).FirstOrDefault();
+			return this.DataCollection.Find(x => x.Id.Equals(id)).FirstOrDefaultAsync().Result;
+
 		}
 
 		/// <summary>
@@ -64,9 +65,13 @@
 		/// <returns>The updated entity.</returns>
 		public virtual T Update(T entity)
 		{
-			this.DataCollection.UpdateOne(null, null);
+			this.DataCollection.ReplaceOneAsync(x => x.Id.Equals(entity.Id), entity, new UpdateOptions
+			{
+				IsUpsert = true
+			});
 
 			return entity;
+
 		}
 
 		/// <summary>
@@ -77,7 +82,10 @@
 		{
 			foreach (T entity in entities)
 			{
-				this.DataCollection.UpdateOne(null, null);
+				this.DataCollection.ReplaceOneAsync(x => x.Id.Equals(entity.Id), entity, new UpdateOptions
+				{
+					IsUpsert = true
+				});
 			}
 		}
 
@@ -87,7 +95,7 @@
 		/// <param name="id">The entity's id.</param>
 		public virtual void Delete(object id)
 		{
-			this.DataCollection.DeleteOne(Builders<T>.Filter.Where(x => x.Id == id.ToString()));
+			this.DataCollection.DeleteOneAsync(x => x.Id.Equals(id));
 		}
 
 		/// <summary>
